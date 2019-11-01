@@ -31,6 +31,6 @@ db.once('open', function() {
   console.log('success');
 });
 
-app.listen(3000,()=>{
+app.listen(process.env.port || 3000,()=>{
     console.log('server is listening on 3000');
 });
