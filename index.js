@@ -14,10 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-app.get('/' ,(req,res)=>{
-    res.send('<h2>Hello </h2>');
-});
+app.use(express.static('public'));
 
 app.use('/user',userRouter);
 app.use('/rent',rentRouter);
