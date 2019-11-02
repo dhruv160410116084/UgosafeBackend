@@ -18,7 +18,7 @@ exports.RegisterUser = (req,res)=>{
 
 exports.UserLogin = (req,res) =>{
         userModal.findUser(req.body).then((user)=>{
-                if(user.lentght == 1)
+                if(user.length == 1)
                         res.send(user);
                 else
                         res.send({status:"no user found"});

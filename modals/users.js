@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 let rentModal = require('./rent');
-//  let locationContorller = require('../contorller/location');
-// console.log('locationContorller');
-//  console.log(locationContorller);
+
 var userSchema = new mongoose.Schema({
     name:{
             type:String,
@@ -63,8 +61,10 @@ exports.updateUser = (userObj,newObj)=>{
 };
 
 exports.findUser = (userObj,colView)=>{
-        return new Promise((resolve,reject)=>{-
+        return new Promise((resolve,reject)=>{
+                console.log(userObj);
                 users.find(userObj,colView).then(document =>{
+                        console.log(document);
                         resolve(document);
                 }).catch(err => {
                         console.log('errore in findUser');
