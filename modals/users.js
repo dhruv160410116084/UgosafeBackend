@@ -60,12 +60,15 @@ exports.updateUser = (userObj,newObj)=>{
         });
 };
 
-exports.findUser = (userObj,colView)=>{
+exports.findUser = (userObj,colView,isLogin)=>{
         return new Promise((resolve,reject)=>{
                 console.log(userObj);
                 users.find(userObj,colView).then(document =>{
                         console.log(document);
-                        resolve(document);
+                        if(isLogin)
+                          resolve(document[0]);
+                        else
+                                resolve(document);
                 }).catch(err => {
                         console.log('errore in findUser');
                         reject(err);
