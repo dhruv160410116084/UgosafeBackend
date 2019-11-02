@@ -16,10 +16,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
 
+app.get('/perDayCost',(req,res)=>{
+    res.send({cost:100});
+});
 app.use('/user',userRouter);
 app.use('/rent',rentRouter);
 app.use('/location',locationRouter);
 app.use('/carpool',carpoolRouter);
+
 
 mongoose.connect(uri,{useUnifiedTopology:true,useNewUrlParser:true,useCreateIndex:true}).catch(err =>{
   console.log(err);
@@ -27,10 +31,9 @@ mongoose.connect(uri,{useUnifiedTopology:true,useNewUrlParser:true,useCreateInde
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
-  console.log('success');
+  console.log('db connected');
 });
 
 app.listen(process.env.PORT || 3000,()=>{
-    console.log('server is listening on 3000');
+    console.log('server is listening ');
 });

@@ -38,11 +38,11 @@ let users=mongoose.model('users',userSchema);
 exports.addUser = (userObj)=>{
         return  users.create(userObj).then(document=>{
                         console.log('successful insertion in users');
-                     
+                        return  document;
                 }).catch((err)=>{
                         console.log('some error occurred');
                         console.log(err)
-                        reject(err);
+                       return err;
                 });
      
 };
@@ -73,19 +73,26 @@ exports.findUser = (userObj,colView)=>{
 }
 
 exports.payment = (userObj)=>{
+        console.log('userObj:');
+        console.log(userObj);
         return new Promise((resolve,reject)=>{
-                checkBalance(userObj.sender,userObj.cost).then((users)=>{
-                                if(users.length > 0){
+                checkBalance(userObj.sender,userObj.cost).then((user)=>{
+                        console.log('after checkbalance');
+                        console.log(user);
+                                if(user.length > 0){
                                         rentModal.updateRent({_id : userObj.rentId,isPaid:false},{isPaid : true}).then(document =>{
                                                 if(document.nModified === 1){
-                        
+                                                        console.log('after update rent');
+                                                        console.log(document);
                                                         users.updateOne(userObj.receiver,{$inc:{money:userObj.cost}}).then(()=>{
                                                                 return  users.updateOne(userObj.sender,{$inc:{money:-userObj.cost}});
                                
                                                         }).then(()=>{
                                                                 console.log('both transection finished');
                                                                 resolve("success");
-                                                        });
+                                                        }).catch(err =>{
+                                                                console.log(err);
+                                                        })
                                                         
                                                 }
                                                 else
@@ -104,7 +111,7 @@ exports.payment = (userObj)=>{
 };
 
 let checkBalance = (userObj,cost)=>{
-        return users.find({_id:userObj,money:{
+        return users.find({email:userObj.email,money:{
                 $gte:cost
         }});
 };

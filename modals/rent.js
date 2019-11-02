@@ -29,10 +29,6 @@ let rentSchema = new mongoose.Schema({
         lon:String,
         required:true
     },
-    jouneyType:{
-        type:String,
-        required:true
-    },
     isRequestAccepted:{
         required:true,
         type:String,
@@ -43,6 +39,10 @@ let rentSchema = new mongoose.Schema({
     },
     isPaid:{
         type:Boolean,
+        required:true
+    },
+    status:{
+        type:String,
         required:true
     },
     isCarpool:{
