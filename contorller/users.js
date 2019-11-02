@@ -58,7 +58,7 @@ exports.fetchProfile = (req,res)=>{
 exports.fetchCenters = (req,res)=>{
         console.log('in fetch centers');
         userModal.findUser({isOwner:true},{money:0,isOwner:0,password:0,__v:0}).then(users =>{
-                res.send(users);
+                res.send({centers:users});
         }).catch(err =>{
                         res.send(err);
         });
