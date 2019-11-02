@@ -38,6 +38,7 @@ let users=mongoose.model('users',userSchema);
 exports.addUser = (userObj)=>{
         return  users.create(userObj).then(document=>{
                         console.log('successful insertion in users');
+                        console.log(document);
                         return  document;
                 }).catch((err)=>{
                         console.log('some error occurred');
