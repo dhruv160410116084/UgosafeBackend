@@ -2,11 +2,11 @@ let mongoose = require('mongoose');
 
 let rentSchema = new mongoose.Schema({
     rentStartDate:{
-        type:Date,
+        type:String,
         required:true
     },
     rentEndDate:{
-        type:Date,
+        type:String,
         required:true
     },
     customerId:{

@@ -62,7 +62,8 @@ exports.updateUser = (userObj,newObj)=>{
 
 exports.findUser = (userObj,colView,isLogin)=>{
         return new Promise((resolve,reject)=>{
-                console.log(userObj);
+               
+                console.log(userObj); // {isOwner:false}
                 users.find(userObj,colView).then(document =>{
                         console.log(document);
                         if(isLogin)
