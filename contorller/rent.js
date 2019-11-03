@@ -21,7 +21,7 @@ exports.fetchRent = (req, res) => {
 
     rentModal.findRent(rentObj).then(document => {
         if (document.length > 0) {
-            res.send(document);
+            res.send({rents:document});
         }
         else {
             res.send({ status: 'no record found' });
