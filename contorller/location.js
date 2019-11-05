@@ -8,7 +8,7 @@ let addUserForLocation = ()=>{
                   usersModal.findUser({isOwner:false},{_id:0,email:1}).then(documents => {
                 documents.forEach(email => {
                         // console.log(email);
-                        usersLocation.set(email.email,{lon:1.1,lan:1.1});
+                        usersLocation.set(email.email,{lon:77.24,lan:22.72});
                 });
                 
             console.log(usersLocation);
