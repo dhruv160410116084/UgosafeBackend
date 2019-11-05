@@ -34,6 +34,25 @@ exports.fetchRent = (req, res) => {
     });
 };
 
+exports.fetchAcceptedRent = (req, res) => {
+    // console.log(req.route.path);
+    let rentObj={};
+    rentObj.isRequestAccepted = "accepted";
+    rentObj.ownerId = req.params.ownerId;
+
+    rentModal.findRent(rentObj).then(document => {
+        if (document.length > 0) {
+            res.send({rents:document});
+        }
+        else {
+            res.send({ status: 'no record found' });
+        }
+    }).catch(err => {
+        res.send(err);
+    });
+};
+
+
 exports.modifyRent = (req, res) => {
     rentModal.updateRent(req.body.selection, req.body.update).then(document => {
         res.send({ nModified: document.nModified });
