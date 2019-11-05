@@ -14,8 +14,11 @@ exports.fetchRent = (req, res) => {
     let rentObj = {};
     if (req.route.path === "/:rentId" && req.params.rentId !== 'all')
         rentObj._id = req.params.rentId;
-    if (req.route.path === "/owner/:ownerId")
+    if (req.route.path === "/owner/:ownerId"){
+
         rentObj.ownerId = req.params.ownerId;
+        rentObj.isRequestAccepted = "pending";
+    }
     if (req.route.path === "/customer/:customerId")
         rentObj.customerId = req.params.customerId;
 
