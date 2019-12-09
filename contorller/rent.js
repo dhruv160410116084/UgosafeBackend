@@ -36,6 +36,7 @@ exports.fetchRent = (req, res) => {
 
 exports.fetchRentHistory = (req, res) => {
     // console.log(req.route.path);
+    console.log("history");
     let rentObj = {};
     // if (req.route.path === "/:rentId" && req.params.rentId !== 'all')
     //     rentObj._id = req.params.rentId;
@@ -44,10 +45,9 @@ exports.fetchRentHistory = (req, res) => {
     //     rentObj.ownerId = req.params.ownerId;
     //     rentObj.isRequestAccepted = "pending";
     // }
-    if (req.route.path === "/customer/:customerId")
+    //if (req.route.path === "/customer/:customerId")
         rentObj.customerId = req.params.customerId;
     rentObj.status="finished";
-
     rentModal.findRent(rentObj).then(document => {
         if (document.length > 0) {
             res.send({rents:document});
@@ -67,6 +67,7 @@ exports.fetchAcceptedRent = (req, res) => {
     rentObj.isRequestAccepted = "accepted";
     rentObj.ownerId = req.params.ownerId;
 
+        console.log(rentObj);
     rentModal.findRent(rentObj).then(document => {
         if (document.length > 0) {
             res.send({rents:document});
