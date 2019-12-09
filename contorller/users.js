@@ -48,7 +48,8 @@ exports.UserPayment = (req,res)=>{
 exports.fetchProfile = (req,res)=>{
         console.log('in fetch profile');
                 userModal.findUser({email:req.params.id}).then(document =>{
-                                res.send(document);
+                        document = document[0]        
+                        res.send(document);
                 }).catch(err =>{
                         console.log(err);
                                 res.send(err);
