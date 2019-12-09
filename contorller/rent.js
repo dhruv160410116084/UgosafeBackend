@@ -19,8 +19,10 @@ exports.fetchRent = (req, res) => {
         rentObj.ownerId = req.params.ownerId;
         rentObj.isRequestAccepted = "pending";
     }
-    if (req.route.path === "/customer/:customerId")
+    if (req.route.path === "/customer/:customerId"){
         rentObj.customerId = req.params.customerId;
+        rentObj.status = {$ne:"finished"}
+    }
 
     rentModal.findRent(rentObj).then(document => {
         if (document.length > 0) {
