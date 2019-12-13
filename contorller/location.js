@@ -49,5 +49,22 @@ exports.panicRemove=(req,res)=>{
         res.send({status:"ok"});
 }
 
+exports.fetchPanicList=(req,res)=>{
+        console.log('------fetch list of panic users');
+        console.log( JSON.stringify(panicMap));
+        let data=[];
+        let iterator = panicMap.entries();
+        // panicMap.forEach(key =>{
+                
+        //         data.push({"email":key,"location":panicMap.get(key)});
+        // })
+        for(let i=0;i<panicMap.size;i++){
+                let temp = iterator.next().value;
+                data.push({email:temp[0],location:temp[1]});
+        }
+
+        res.send({"list": data});
+}
+
 
 exports.addUserForLocation=addUserForLocation;
