@@ -29,9 +29,6 @@ var userSchema = new mongoose.Schema({
             lat:String,
             lon:String
     },
-    equipments:{
-            type:[String]
-    }
 });
 
 let users=mongoose.model('users',userSchema);

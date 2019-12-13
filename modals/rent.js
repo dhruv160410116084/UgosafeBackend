@@ -51,7 +51,11 @@ let rentSchema = new mongoose.Schema({
     },
     carpoolUsers:{
         type:Array
-    }
+    },
+    equipments:[{
+        type:String,
+        required:true
+}]
 });
 
 let rent = mongoose.model('rent',rentSchema);
