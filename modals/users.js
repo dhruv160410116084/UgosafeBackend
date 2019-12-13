@@ -28,6 +28,9 @@ var userSchema = new mongoose.Schema({
             type:Object,
             lat:String,
             lon:String
+    },
+    equipments:{
+            type:[String]
     }
 });
 
