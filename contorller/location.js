@@ -39,6 +39,7 @@ exports.panicAdd=(req,res)=>{
 
         panicMap.set(req.params.email,usersLocation.get(req.params.email));
         console.log(panicMap);
+        res.send({status:"ok"});
 }
 
 
