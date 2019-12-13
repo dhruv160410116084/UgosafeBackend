@@ -39,7 +39,7 @@ exports.panicAdd=(req,res)=>{
         console.log('in panic add');
         if(req.params.email)
                 panicMap.set(req.params.email,usersLocation.get(req.params.email));
-
+        console.log('panicMAP');
         console.log(panicMap);
         res.send({status:"ok"});
 }
