@@ -1,6 +1,7 @@
 let usersModal = require('../modals/users');
 
 let usersLocation = new Map();
+let panicMap = new Map();
 
 let addUserForLocation = ()=>{ 
         console.log('add user for location');
@@ -25,6 +26,7 @@ let addUserForLocation = ()=>{
 exports.setLiveLocation = (req,res)=>{
         console.log('-------------set----------------');
         usersLocation.set(req.body.email,req.body.location);
+        panicMap.set(req.params.email,usersLocation.get(req.params.email));
         res.send({result:'ok'});
 };
 
@@ -32,5 +34,12 @@ exports.getLiveLocation = (req,res)=>{
     console.log('--------------get---------------');
    res.send( usersLocation.get(req.params.email));
 };
+
+exports.panicAdd=(req,res)=>{
+
+        panicMap.set(req.params.email,usersLocation.get(req.params.email));
+        console.log(panicMap);
+}
+
 
 exports.addUserForLocation=addUserForLocation;
