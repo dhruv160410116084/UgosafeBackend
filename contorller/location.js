@@ -36,8 +36,15 @@ exports.getLiveLocation = (req,res)=>{
 };
 
 exports.panicAdd=(req,res)=>{
-
+        console.log('in panic add');
         panicMap.set(req.params.email,usersLocation.get(req.params.email));
+        console.log(panicMap);
+        res.send({status:"ok"});
+}
+
+exports.panicRemove=(req,res)=>{
+        console.log('in panic remove');
+        panicMap.delete(req.params.email);
         console.log(panicMap);
         res.send({status:"ok"});
 }
