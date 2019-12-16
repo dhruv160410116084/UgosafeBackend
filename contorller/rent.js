@@ -63,6 +63,18 @@ exports.fetchRentHistory = (req, res) => {
 };
 
 
+exports.fetchRentOwnerHistory = (req,res)=>{
+        let rentObj = {ownerId:req.params.ownerId,status:"finished"};
+        rentModal.findRent(rentObj).then(document => {
+            if(document.length > 0)
+                res.send({rents:document});
+            else 
+                res.send({status:'no record found'});
+        }).catch(err =>{
+            res.send(err);
+        })
+}
+
 exports.fetchAcceptedRent = (req, res) => {
     // console.log(req.route.path);
     let rentObj={};
@@ -102,4 +114,12 @@ exports.addCarpoolUser =(req,res) => {
             res.send({result:"failure"});
         });
 };
+
+exports.addFeedBack = (req,res) =>{
+    rentModal.updateRent({_id:req.body.rentId},{feedback:req.body.feedback}).then(document =>{
+        res.send({nModified : document.nModified});
+    }).catch(err => {
+        res.send(err);
+    })
+}
 

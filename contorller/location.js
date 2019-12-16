@@ -53,7 +53,7 @@ exports.panicRemove=(req,res)=>{
 
 exports.fetchPanicList=(req,res)=>{
         console.log('------fetch list of panic users');
-        console.log( JSON.stringify(panicMap));
+
         let data=[];
         let iterator = panicMap.entries();
         // panicMap.forEach(key =>{
