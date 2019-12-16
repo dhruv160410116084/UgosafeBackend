@@ -55,7 +55,18 @@ let rentSchema = new mongoose.Schema({
     equipments:[{
         type:String,
         required:true
-}]
+}],
+    isHomeDelivery:{
+    type:Boolean,
+    required:true
+    },
+    driver:{
+        type:Boolean,
+        required:true
+    },
+    feedback:{
+        type:String
+    }
 });
 
 let rent = mongoose.model('rent',rentSchema);
@@ -72,7 +83,6 @@ exports.insertRent = (rentObj)=>{
                 console.log('rent insertion error');
                 reject(err);
             });
-            
             
     });
 };
