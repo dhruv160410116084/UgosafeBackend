@@ -29,6 +29,10 @@ var userSchema = new mongoose.Schema({
             lat:String,
             lon:String
     },
+    city:{
+            type:String,
+            required:true
+    }
 });
 
 let users=mongoose.model('users',userSchema);
