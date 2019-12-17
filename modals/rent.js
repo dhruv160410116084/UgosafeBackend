@@ -17,16 +17,13 @@ let rentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    startPosition:{
-        type:Object,
-        lat:String,
-        lon:String,
+    startCity:{
+        type:String,
+        
         required:true
     },
-    endPosition:{
-        type:Object,
-        lat:String,
-        lon:String,
+    endCity:{
+        type:String,
         required:true
     },
     isRequestAccepted:{
@@ -66,6 +63,12 @@ let rentSchema = new mongoose.Schema({
     },
     feedback:{
         type:String
+    },
+    location:{
+        type:Object,
+        lat:String,
+        lon:String,
+        required:true
     }
 });
 
