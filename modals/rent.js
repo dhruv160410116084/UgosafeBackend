@@ -17,6 +17,10 @@ let rentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    ownerIdEnd:{
+        type:String,
+        required:true
+    },
     startCity:{
         type:String,
         
