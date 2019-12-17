@@ -1,11 +1,18 @@
 let rentModal = require('../modals/rent');
 
+let userModal = require('../modals/users');
+
 exports.createRent = (req, res) => {
-    rentModal.insertRent(req.body).then(document => {
-        res.send({ status: 'success' });
-    }).catch(err => {
-        res.send(err);
+console.log("--------------in create rent");
+    userModal.findUser({city:req.body.startCity}).then((user)=>{
+        req.body.ownerId = user[0].email;
+        rentModal.insertRent(req.body).then(document => {
+            res.send({ status: 'success' });
+        }).catch(err => {
+            res.send(err);
+        });
     });
+    
 
 };
 
